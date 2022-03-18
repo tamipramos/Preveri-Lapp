@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Login</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='{% static 'base/style.css' %}'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/031030b76d.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+
+</head>
+
+<body>
+    <div id="body" class="container">
+    {% block content %}
+    {% if request.user.is_authenticated %}
+        {% block bienvenida %}
+        <div class="forms-cotainer">
+            <div class="iniciar-registrar">
+                <h2 id="welcome" class="title">Hola,</h2><h2 id="username" class="title" align="right">{{request.user|title}}</h2>
+                <a href="{% url 'logout' %}"><input  type="submit" value="Cerrar Sesión" class="btn solid"></a>
+
+            </div>
+        </div>
+        {% endblock bienvenida %}
+    {% else %}
+
+        <div class="forms-cotainer">
+            <div class="iniciar-registrar">
+                <form method="POST" action="" class="iniciar-sesion-form">
+                    {% csrf_token %}
+                    <h2 class="title">Conectarse</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="username" name="username" placeholder="Nombre de Usario">
+                    </div> 
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" name="password" placeholder="Clave de Acceso" >
+                    </div>
+                    <input id="connect-btn" type="submit" value="Conectar" class="btn solid">
+                    <p class="social-text">Iniciar sesion con otros medios sociales</p>
+                        <div class="social-media">
+                            <a href="#" class="s-icon">
+                                <i class="fab fa-google"></i>
+                            </a>
+                            <a href="#" class="s-icon">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                </form>
+                {% endif %}
+<!-- REGISTRO
+                <form action="" class="crear-sesion-form">
+                    <h2 class="title">Crear cuenta</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="Username" placeholder="Nombre de Uusario">
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="password" placeholder="Correo electronico">
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="Password" placeholder="Password">
+                    </div>
+                    <input type="submit" value="Registrarse" class="btn solid">
+                </form>
+/REGISTRO -->
+            </div>
+        </div>
+    </div>
+    {% endblock content %}
+    {% block registro %}
+    {% if request.user.is_authenticated %}
+    <!--PANEL DE CONTROL-->
+    {% else %}
+        <div class="paneles-container">
+            <div class="panel left-panel">
+                <div class="contenido">
+                    <h3>¿Aun no eres miembro?</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est explicabo quidem odit doloribus veritatis blanditiis molestias earum quam, perspiciatis cumque, ad excepturi ducimus esse maiores delectus voluptatibus voluptates inventore enim.</p>
+                    <button class="btn transparent" id="register">Crear cuenta</button>
+
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% endblock registro %}
+</body>
+
+
+
+
+</html>

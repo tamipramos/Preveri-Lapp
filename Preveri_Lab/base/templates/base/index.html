@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Home</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='{% static 'base/style.css' %}'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/031030b76d.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+
+</head>
+
+<div>
+        <h2 id="welcome" class="title">INDEX</h2>
+        <td style="vertical-align: text-top">
+            <font size="72" style="text-align: right;">{{request.user|title}}</font>
+        </td>
+       
+      
+</div> 
+
+<a href="{% url 'logout' %}" align="right"><input  type="submit" value="Cerrar Sesión" class="btn solid"></a>
+
+</html>
