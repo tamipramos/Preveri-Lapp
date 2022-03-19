@@ -35,36 +35,11 @@
         </div>
         {% endblock bienvenida %}
     {% else %}
-
         <div class="forms-cotainer">
             <div class="iniciar-registrar">
-                <form method="POST" action="" class="iniciar-sesion-form">
-                    {% csrf_token %}
-                    <h2 class="title">Conectarse</h2>
-                    <div class="input-field">
-                        <i class="fas fa-user"></i>
-                        <input type="username" name="username" placeholder="Nombre de Usario">
-                    </div> 
-                    <div class="input-field">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" name="password" placeholder="Clave de Acceso" >
-                    </div>
-                    <input id="connect-btn" type="submit" value="Conectar" class="btn solid">
-                    <!-- GOOGLE
-                        <p class="social-text">Iniciar sesion con otros medios sociales</p>
-                        <div class="social-media">
-                            <a href="#" class="s-icon">
-                                <i class="fab fa-google"></i>
-                            </a>
-                            <a href="#" class="s-icon">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                        </div>
-                    -->
-                </form>
                 {% endif %}
-<!-- REGISTRO
-                <form action="" class="crear-sesion-form">
+                <form method="POST" action="" class="crear-sesion-form">
+                    {% csrf_token %}
                     <h2 class="title">Crear cuenta</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
@@ -80,7 +55,6 @@
                     </div>
                     <input type="submit" value="Registrarse" class="btn solid">
                 </form>
-/REGISTRO -->
             </div>
         </div>
     </div>

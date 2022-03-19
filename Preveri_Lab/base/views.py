@@ -26,10 +26,10 @@ from django.contrib import messages
 from .models import Task
 ###
 
-class Index(LoginRequiredMixin, TemplateView):
-    template_name = 'index.html'
+class Home(LoginRequiredMixin, TemplateView):
+    template_name = 'base/home.html'
 
-class Menu(TemplateView):
+class SignUp(TemplateView):
     template_name = "menu.html"
 
 class LoginViewC(LoginView):
