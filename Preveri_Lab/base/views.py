@@ -26,7 +26,7 @@ from django.contrib import messages
 from .models import Task
 ###
 
-class Index(TemplateView):
+class Index(LoginRequiredMixin, TemplateView):
     template_name = 'index.html'
 
 class Menu(TemplateView):
@@ -37,22 +37,3 @@ class LoginViewC(LoginView):
     redirect_autheticated_user=True
     def get_success_url(self):
         return reverse_lazy('home')
-
-
-def user_login(request):
-    if not request.user.is_authenticated:
-        if request.method == "POST":
-            fm = AuthenticationForm(request=request,data=request.POST)
-            if fm.is_valid():
-                uname = fm.cleaned_data['username']
-                upass = fm.cleaned_data['password']
-                user = authenticate(username=uname, password=upass)
-                if user is not None:
-                    login(request,user)
-                    messages.success(request,'Logged in successfully!!!')
-                    return render(request, 'home')
-        else:
-            fm = AuthenticationForm()
-        return render(request,'base/index.html',{'form':fm})
-    else:
-        return render(request, 'home')
