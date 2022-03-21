@@ -9,4 +9,8 @@ class CustomAuthForm(UserCreationForm):
     email = forms.CharField(widget=EmailInput(attrs={'class':'validate','placeholder': 'Email'}))
     first_name = forms.CharField(widget=TextInput(attrs={'class':'validate','placeholder': 'Nombre'}))
     last_name = forms.CharField(widget=TextInput(attrs={'class':'validate','placeholder': 'Apellidos'}))
+
+    class Meta(UserCreationForm.Meta):
+        fields = ("username", "email", "last_name", "first_name")
+
     
