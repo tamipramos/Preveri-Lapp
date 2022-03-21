@@ -12,54 +12,61 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/031030b76d.js" crossorigin="anonymous"></script>
-    <title>Pagina Principal</title>
+
+    <title>Página Principal</title>
+    
 </head>
 <body>
     <div class="container">
         <div class="navegacion">
             <ul>
                 <li>
-                    <a href="{% url 'home' %}">
+                    
                     <span class="icono">PREVERI-LAB</span>
                     <span class="titulo">{{request.user|title}}</span>
-                    </a>
+                    
                 </li>
                 <li>
                     <a href="#">
                     <span class="icono"><i class="fa-solid fa-house-user"></i></span>
                     <span class="titulo">Panel de control</span>
                 </a>
-                </li>                <li>
+                </li>                
+                <li>
                     <a href="#">
                     <span class="icono"><i class="fa-solid fa-list-check"></i></span>
-                    <span class="titulo">Revision de fallos</span>
+                    <span class="titulo">Revisión de fallos</span>
                     </a>
-                </li>                <li>
+                </li>                
+                <li>
                     <a href="#">
                         <span class="icono"><i class="fa-solid fa-money-check"></i></span>
-                        <span class="titulo">Hacer revision</span>
+                        <span class="titulo">Hacer revisión</span>
                     </a>
-                 </li>                <li>
+                 </li>                
+                 <li>
                     <a href="#">
                         <span class="icono"><i class="fa-solid fa-paper-plane"></i></span>
                         <span class="titulo">Enviar ticket</span>
                     </a>
-                </li>                <li>
+                </li>                
+                <li>
                     <a href="#">
                         <span class="icono"><i class="fa-solid fa-people-group"></i></span>
-                        <span class="titulo">Quienes somos</span>
+                        <span class="titulo">¿Quiénes somos?</span>
                     </a>
-                </li>                <li>
+                </li>                
+                <li>
                     <a href="{% url 'logout' %}">
                         <span class="icono"><i class="fa-solid fa-right-from-bracket"></i></span>
-                          <span class="titulo">Cerrar sesion</span>
+                          <span class="titulo">Cerrar sesión</span>
                     </a>
-                                    </li>                
-                                        
-                </li>
+                </li>                
+
                     
             </ul>
         </div>
     </div>
+    
 </body>
 </html>

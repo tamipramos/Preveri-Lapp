@@ -16,11 +16,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-
-
 </head>
 
 <body>
+    
     <div id="body" class="container">
     {% block content %}
     {% if request.user.is_authenticated %}
@@ -37,49 +36,59 @@
     {% else %}
         <div class="forms-cotainer">
             <div class="iniciar-registrar">
-                {% endif %}
+
                 <form method="POST" action="" class="crear-sesion-form">
+
                     {% csrf_token %}
+
                     <h2 class="title">Crear cuenta</h2>
+
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="Username" placeholder="Nombre de Uusario">
+                        {{ form.username }}
                     </div>
+                    
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        {{ form.first_name }}
+                    </div>
+                    
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        {{ form.last_name }}
+                    </div>
+
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="password" placeholder="Correo electronico">
+                        {{form.email}}
                     </div>
+
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="Password" placeholder="Password">
+                        {{form.password1}}
                     </div>
-                    <input type="submit" value="Registrarse" class="btn solid">
-                </form>
-            </div>
-        </div>
-    </div>
-    {% endblock content %}
-    {% block registro %}
-    {% if request.user.is_authenticated %}
-    <!--PANEL DE CONTROL-->
-    {% else %}
-        <div class="paneles-container">
-            <div class="panel left-panel">
-                <div class="contenido">
-                    <h3>¿Aun no eres miembro?</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est explicabo quidem odit doloribus veritatis blanditiis molestias earum quam, perspiciatis cumque, ad excepturi ducimus esse maiores delectus voluptatibus voluptates inventore enim.</p>
-                    <a href="{% url 'register' %}"><button class="btn transparent" id="register">Crear cuenta</button></a>
 
-                    </h3>
-                </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        {{form.password2}}
+                    </div>
+
+                    <input type="submit" value="Registrarse" class="btn solid">
+                    <a href="{% url 'login' %}"><input type="button" value="Iniciar sesión" class="btn solid"></a>
+
+
+                </form>
+                
             </div>
         </div>
+        
     </div>
+    
     {% endif %}
+    {% endblock content %}
+
+    {% block registro %}
     {% endblock registro %}
 </body>
-
-
-
 
 </html>
