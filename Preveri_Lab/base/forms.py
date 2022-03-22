@@ -8,12 +8,7 @@ import re
 from django.core.exceptions import ValidationError
 from django.core.validators import EmailValidator
 
-
-
 class CustomAuthForm(UserCreationForm):
-    
-    
-
 
     username = forms.CharField(widget=TextInput(attrs={'class':'validate','placeholder': 'Usuario'}))
     password1 = forms.CharField(widget=PasswordInput(attrs={'placeholder':'Contraseña'}))

@@ -16,16 +16,8 @@ from django.views.generic import TemplateView
 
 #LOGIN - LOGOUT - REGISTER
 from django.contrib.auth.views import LoginView
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth import login, authenticate, logout
-from django.contrib import messages
-from django.core.exceptions import ValidationError
-from django.core.validators import validate_email
-
-value = "foo.bar@baz.qux"
-
-
+from django.contrib.auth import login
 ###
 
 #LOCAL MODULES
@@ -36,14 +28,10 @@ from .models import Task
 
 class Home(LoginRequiredMixin, TemplateView):
     #model = MODELO
-
     #fields = ['table entries']                                     #shows only the fields in the DB table
     #def form_valid(self, form):
     #form.instance.user = self.request.user                         #returning only data from the current user
     #return super(FORM_NAME, self).form_valid(form)
-
-
-
     #def get_context_data(self, **kwargs):                          #returns the value of context 
         #context=super().get_context_data(**kwargs)                 
         #context['color']= 'red'                                    #In this case it is returning 'red'
@@ -70,7 +58,6 @@ class RegisterViewC(FormView):
         if user is not None:
            login(self.request, user)
         return super(RegisterViewC, self).form_valid(form)
-
 
 class LoginViewC(LoginView):
     template_name= 'base/login.html'
