@@ -8,8 +8,11 @@ import re
 from django.core.exceptions import ValidationError
 from django.core.validators import EmailValidator
 
-class CustomAuthForm(UserCreationForm):
+from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV2Checkbox
+from Preveri_Lab.settings import RECAPTCHA_PUBLIC_KEY, RECAPTCHA_PRIVATE_KEY
 
+class CustomAuthForm(UserCreationForm):
     username = forms.CharField(widget=TextInput(attrs={'class':'validate','placeholder': 'Usuario'}))
     password1 = forms.CharField(widget=PasswordInput(attrs={'placeholder':'Contraseña'}))
     password2 = forms.CharField(widget=PasswordInput(attrs={'placeholder':'Repita contraseña'}))
@@ -34,6 +37,15 @@ class CustomAuthForm(UserCreationForm):
         if commit:
             user.save()
         return user
-            
 
-        
+    def captcha_form(self):
+        captcha = ReCaptchaField(
+            widget=ReCaptchaV2Checkbox,
+            attrs={
+            'data-theme': 'dark',
+            'data-size': 'compact',},
+            
+        )
+
+
+    
