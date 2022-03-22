@@ -24,6 +24,8 @@ body, input{
     width: 2000px;
     height: 2000px;
     background: #121212;
+    background: url(https://images.unsplash.com/photo-1647599708318-1b267bf44fd2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80);
+    background-size: cover;
     top: -10%;
     right: 48%;
     z-index: 6;
@@ -111,6 +113,9 @@ form.crear-sesion-form{
     color: #333;
 }
 
+.input-field input::placeholder{
+    opacity: 77%;
+}
 
 .btn{
     width: 150px;
@@ -166,7 +171,28 @@ form.crear-sesion-form{
     pointer-events: all;
     padding: 28rem 12% 15rem 0%;
     position: relative;
-    left: -140px;
+    left: -300px;
+ }
+
+.iniciar-registrar a{
+    position: relative;
+    color: #121212;
+    text-decoration-line: none;
+ }
+
+ .iniciar-registrar a:hover{
+    color: #F05454;
+ }
+
+ .center-panel .btn{
+    background-color: #F5F5F5;
+    color: #121212;
+    cursor: pointer;
+ }
+
+ .center-panel .btn:hover{
+    background-color: #F05454;
+    color: #F5F5F5;
  }
 
  .panel .contenido{
@@ -222,4 +248,21 @@ form.crear-sesion-form{
     right: 52%;
 }
 
+.iniciar-registrar .input-field{
+    margin: 5px;
+    width: 300px;
+}
 
+.iniciar .btn{
+    color: #F5F5F5;
+    background-color: #121212;
+    width: 300px;
+}
+
+.iniciar{
+    margin: -10px;
+}
+
+.iniciar .btn:hover{
+    background-color: #F05454;
+}

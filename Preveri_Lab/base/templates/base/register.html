@@ -8,7 +8,6 @@
     <title>Login</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='{% static 'base/style.gen.css' %}'>
-    <!--<link rel='stylesheet' type='text/css' media='screen' href='{% static 'base/style.nav.css' %}'>-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
@@ -16,6 +15,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LeqKv8eAAAAAH8j3dNTd0vii0HL8wP02vyw0Qq7"></script>
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LeqKv8eAAAAAH8j3dNTd0vii0HL8wP02vyw0Qq7"></script>
+    <script>
+    grecaptcha.enterprise.ready(function() {
+    grecaptcha.enterprise.execute('6LeqKv8eAAAAAH8j3dNTd0vii0HL8wP02vyw0Qq7', {action: 'login'}).then(function(token) {
+         ...
+        });
+    });
+    </script>
 </head>
 
 <body>
@@ -29,7 +37,6 @@
                 <h2 id="welcome" class="title">Hola,</h2><h2 id="username" class="title" align="right">{{request.user|title}}</h2>
                 <a href="{% url 'home' %}"><input  type="submit" value="Ir al Panel" class="btn solid"></a>
                 <a href="{% url 'logout' %}"><input  type="submit" value="Cerrar Sesión" class="btn solid"></a>
-
             </div>
         </div>
         {% endblock bienvenida %}
@@ -60,10 +67,8 @@
 
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        {{ form.email }}
+                        {{form.email}}
                     </div>
-
-                    {{ form.email.errors }}
 
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
@@ -74,10 +79,15 @@
                         <i class="fas fa-lock"></i>
                         {{form.password2}}
                     </div>
-                    {{ form.password2.errors }}
-                    <input type="submit" value="Registrarse" class="btn solid">
-                    <a href="{% url 'login' %}"><input type="button" value="Iniciar sesión" class="btn solid"></a>
 
+                   <div>
+                       <div class="g-recaptcha" data-sitekey="6LeqKv8eAAAAAH8j3dNTd0vii0HL8wP02vyw0Qq7"></div>
+                   </div>
+
+                    <input type="submit" value="Crear" class="btn solid">
+                    <div class="iniciar">
+                        <a href="{% url 'login' %}"><input type="button" value="Ya tengo una cuenta" class="btn solid"></a>
+                    </div>
 
                 </form>
                 
