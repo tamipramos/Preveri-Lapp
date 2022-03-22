@@ -1,6 +1,7 @@
 #GENERAL MODULES
 from re import template
-from django.shortcuts import redirect, render
+from django.forms import ValidationError
+from django.shortcuts import render, HttpResponse
 from django.urls import reverse_lazy, reverse
 ###
 
@@ -18,6 +19,7 @@ from django.views.generic import TemplateView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import login
+
 ###
 
 #LOCAL MODULES
@@ -58,6 +60,14 @@ class RegisterViewC(FormView):
         if user is not None:
            login(self.request, user)
         return super(RegisterViewC, self).form_valid(form)
+
+    def captcha(self, request):
+        if request.method == 'POST':
+            form= CustomAuthForm(request.POST)
+
+        else:
+            form=CustomAuthForm()
+        return render(request, 'base/register.html', {'form':form})
 
 class LoginViewC(LoginView):
     template_name= 'base/login.html'

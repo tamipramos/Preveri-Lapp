@@ -13,12 +13,14 @@ from captcha.widgets import ReCaptchaV2Checkbox
 from Preveri_Lab.settings import RECAPTCHA_PUBLIC_KEY, RECAPTCHA_PRIVATE_KEY
 
 class CustomAuthForm(UserCreationForm):
+
     username = forms.CharField(widget=TextInput(attrs={'class':'validate','placeholder': 'Usuario'}))
     password1 = forms.CharField(widget=PasswordInput(attrs={'placeholder':'Contraseña'}))
     password2 = forms.CharField(widget=PasswordInput(attrs={'placeholder':'Repita contraseña'}))
     email = forms.EmailField( widget=EmailInput(attrs={'class':'validate','placeholder': 'Email'}))
     first_name = forms.CharField(widget=TextInput(attrs={'class':'validate','placeholder': 'Nombre'}))
     last_name = forms.CharField(widget=TextInput(attrs={'class':'validate','placeholder': 'Apellidos'}))
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
 
     class Meta(UserCreationForm.Meta):
         fields = ("username", "email", "last_name", "first_name",) 
@@ -30,7 +32,8 @@ class CustomAuthForm(UserCreationForm):
         if domain not in domain_list:
             raise forms.ValidationError('Debes pertenecer al centro.')
         return data
-        
+
+
     def save(self, commit=True):
         user = super(CustomAuthForm, self).save(commit=False)
         user.email = self.cleaned_data["email"]
@@ -38,14 +41,8 @@ class CustomAuthForm(UserCreationForm):
             user.save()
         return user
 
-    def captcha_form(self):
-        captcha = ReCaptchaField(
-            widget=ReCaptchaV2Checkbox,
-            attrs={
-            'data-theme': 'dark',
-            'data-size': 'compact',},
-            
-        )
+
+
 
 
     

@@ -7,7 +7,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Login</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='{% static 'base/style.gen.css' %}'>
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'base/style.gen.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
@@ -15,11 +15,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LeqKv8eAAAAAH8j3dNTd0vii0HL8wP02vyw0Qq7"></script>
-    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LeqKv8eAAAAAH8j3dNTd0vii0HL8wP02vyw0Qq7"></script>
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6Ldb1wEfAAAAAFeuyj1-70Zi5NHLZTrMrhloOlfo"></script>
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6Ldb1wEfAAAAAFeuyj1-70Zi5NHLZTrMrhloOlfo"></script>
     <script>
     grecaptcha.enterprise.ready(function() {
-    grecaptcha.enterprise.execute('6LeqKv8eAAAAAH8j3dNTd0vii0HL8wP02vyw0Qq7', {action: 'login'}).then(function(token) {
+    grecaptcha.enterprise.execute('6Ldb1wEfAAAAAFeuyj1-70Zi5NHLZTrMrhloOlfo', {action: 'login'}).then(function(token) {
          ...
         });
     });
@@ -49,7 +49,9 @@
                     {% csrf_token %}
 
                     <h2 class="title">Crear cuenta</h2>
-
+                    {{ form.email.errors }}
+                    {{ form.password2.errors }}
+                    {{ form.captcha.errors }}
                     <div class="input-field">
                         <i class="fas fa-user"></i>
                         {{ form.username }}
@@ -68,6 +70,7 @@
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
                         {{form.email}}
+                        
                     </div>
 
                     <div class="input-field">
