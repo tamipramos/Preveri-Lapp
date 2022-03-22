@@ -60,8 +60,10 @@
 
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        {{form.email}}
+                        {{ form.email }}
                     </div>
+
+                    {{ form.email.errors }}
 
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
@@ -72,7 +74,7 @@
                         <i class="fas fa-lock"></i>
                         {{form.password2}}
                     </div>
-
+                    {{ form.password2.errors }}
                     <input type="submit" value="Registrarse" class="btn solid">
                     <a href="{% url 'login' %}"><input type="button" value="Iniciar sesión" class="btn solid"></a>
 

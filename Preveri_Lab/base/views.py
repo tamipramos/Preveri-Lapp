@@ -20,11 +20,16 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
+from django.core.exceptions import ValidationError
+from django.core.validators import validate_email
+
+value = "foo.bar@baz.qux"
 
 
 ###
 
 #LOCAL MODULES
+import re
 from .forms import CustomAuthForm
 from .models import Task
 ###
@@ -63,7 +68,7 @@ class RegisterViewC(FormView):
     def form_valid(self, form):
         user = form.save()
         if user is not None:
-            login(self.request, user)
+           login(self.request, user)
         return super(RegisterViewC, self).form_valid(form)
 
 
