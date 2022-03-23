@@ -72,6 +72,7 @@ class RegisterViewC(FormView):
 class LoginViewC(LoginView):
     template_name= 'base/login.html'
     redirect_autheticated_user=True
+    
     def get_success_url(self):
         return reverse_lazy('home')
 
