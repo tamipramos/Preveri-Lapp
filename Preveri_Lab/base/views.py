@@ -25,7 +25,6 @@ from django.contrib.auth import login
 #LOCAL MODULES
 import re
 from .forms import CustomAuthForm
-from .models import Task
 ###
 
 class Home(LoginRequiredMixin, TemplateView):
@@ -64,7 +63,6 @@ class RegisterViewC(FormView):
     def captcha(self, request):
         if request.method == 'POST':
             form= CustomAuthForm(request.POST)
-
         else:
             form=CustomAuthForm()
         return render(request, 'base/register.html', {'form':form})
@@ -72,7 +70,7 @@ class RegisterViewC(FormView):
 class LoginViewC(LoginView):
     template_name= 'base/login.html'
     redirect_autheticated_user=True
-    
+
     def get_success_url(self):
         return reverse_lazy('home')
 
